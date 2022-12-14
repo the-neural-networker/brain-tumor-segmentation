@@ -25,7 +25,7 @@ cd src
 TRAIN_CSV={path to BraTs 2020 training csv}
 TEST_CSV={path to BraTs 2020 testing csv}
 
-# run module
+# train model
 python train.py --gpus 1 --batch_size 1 --max_epochs 50
 --train_csv=${TRAIN_CSV} \
 --test_csv=${TEST_CSV} \
