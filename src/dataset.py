@@ -7,39 +7,6 @@ import nibabel as nib
 from utils import get_augmentations
 import pytorch_lightning as pl
 
-def get_dataloader(
-    path_to_csv: list,
-    phase: str,
-    batch_size: int = 1,
-    num_workers: int = 0,
-):
-    '''Returns: dataloader for the model training'''
-    for path in path_to_csv:
-        if 'val' in path:
-            val_df = pd.read_csv(path)
-        else:
-            df = pd.read_csv(path)
-
-    dataset = BratsDataset(df, phase)    
-    dataloader = DataLoader(
-        dataset,
-        batch_size=batch_size,
-        num_workers=num_workers,
-        pin_memory=True,
-        shuffle=True,   
-    )
-    if phase == 'train':
-        val_dataset = BratsDataset(val_df, phase)
-        val_dataloader = DataLoader(
-            val_dataset,
-            batch_size=batch_size,
-            num_workers=num_workers,
-            pin_memory=True,
-            shuffle=True,   
-        )
-        return [dataloader, val_dataloader]
-    else:
-        return [dataloader]
         
 class BratsDataset(Dataset):
     def __init__(self, df: pd.DataFrame, phase: str="test", is_resize: bool=True):
