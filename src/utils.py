@@ -116,20 +116,6 @@ def get_3D_img_info(dataloader):
             cmap='cool', alpha=0.6)
     return True
 
-# def get_paths(df):
-#     paths = []
-#     for _, row  in df.iterrows():
-        
-#         id_ = row['Brats20ID']
-#         phase = id_.split("_")[-2]
-        
-#         if phase == 'Training':
-#             path = os.path.join(config.train_root_dir, id_)
-#         else:
-#             path = os.path.join(config.test_root_dir, id_)
-#         paths.append(path)
-#     return paths
-
 def get_augmentations(phase):
     list_transforms = []
     

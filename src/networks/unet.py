@@ -149,15 +149,6 @@ class UNet3d(pl.LightningModule):
                         truth: torch.Tensor,
                         treshold: float = 0.5,
                         eps: float = 1e-9):
-        """
-        Calculate Dice score for data batch.
-        Params:
-            probobilities: model outputs after activation function.
-            truth: truth values.
-            threshold: threshold for probabilities.
-            eps: additive to refine the estimate.
-            Returns: dice score aka f1.
-        """
         scores = []
         num = probabilities.shape[0]
         predictions = (probabilities >= treshold).float()
